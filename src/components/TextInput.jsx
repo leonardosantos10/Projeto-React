@@ -17,7 +17,7 @@ export default function TextInput({placeholder = 'o que está acontecendo?', max
     }
   }
 
- function sendTweet(event) {
+ function sendTweet() {
    setTweetList([...tweetList, text]);
  }
 
@@ -34,11 +34,9 @@ export default function TextInput({placeholder = 'o que está acontecendo?', max
             <p>{text.length} / {maxLength}</p>
             <button onClick={sendTweet}>Enviar</button>
             {tweetList.map(tweet => {
-               return (
-                  <p>{tweet}</p>
-               )
+             return<p>{tweet}</p>  
             })}
-         </div>
+        </div>
     );
 }
 
