@@ -1,24 +1,19 @@
-import { useState} from 'react';
+
 import TextInput from "../components/TextInput";
 import styles from "./Index.module.css";
+import Tweet from '../components/Tweet';
+import { useIndex } from '../hooks/useIndex.page';
 
 
 export default function Index() {
-const [text, setText] = useState('');
-const [tweetList, setTweetList] = useState([])
-const maxLength = 125;
 
-function onTextChange(event) {
-    const text = event.target.value;
-    if (text.length <= maxLength) {
-     setText(text);
-   }
- }
-  
-  function sendTweet() {
-    setTweetList([...tweetList, text]);
-  }
-
+  const {
+    text,
+    onTextChange,
+    maxLength,
+    sendTweet,
+    tweetList
+  } = useIndex();
 
   return (
    <div>
@@ -41,18 +36,23 @@ function onTextChange(event) {
          <button 
                onClick={sendTweet}
                className={styles.postButton}
+                disabled={text.length === 0}
                >
                Tweetar
          </button>
       </div>
 
-      <ul>
-         {tweetList.map(tweet  => {
-           // eslint-disable-next-line react/jsx-key 
-         return <li>{tweet}</li>  
-      })}
-      </ul>
-   </div>
+
+<ul className={styles.tweetList}>
+  {tweetList.map(tweet  => {
+    return (
+      <li key={tweet.id} className={styles.tweetListItem}>
+        <Tweet tweet={tweet} />
+      </li>
+    )
+  })}
+</ul>
+ </div>
   )
 }
 
