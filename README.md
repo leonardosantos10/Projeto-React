@@ -9,4 +9,4 @@ Currently, two official plugins are available:
 
 
 
-<img src= ""/>
+<img src= "https://github.com/leonardosantos10/Projeto-clone-Twitter/blob/main/img/img-desktop.png?raw=true"/>
